@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+   nginx:
+    image: nginx
+    volumes:
+      - "E:/docker/volume/nginx/config:/etc/nginx"
+      - "E:/docker/volume/nginx/templates:/www"
+      - "E:/docker/volume/nginx/log:/var/log/nginx"
+    ports:
+      - 80:80
+    networks:
+      - my-network
+
+
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - "/var/mongo/db:/data/db"
+      - "/var/mongo/mongo.conf.orig:/etc/mongod.conf.orig"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: zhh123
+    networks:
+      - my-network
+
+networks:
+  my-network:
+
