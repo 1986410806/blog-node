@@ -28,7 +28,8 @@ exports.connect = () => {
     mongoose.connect(CONFIG.MONGODB.uri, {
         useCreateIndex: true,
         useNewUrlParser: true,
-        promiseLibrary: global.Promise
+        promiseLibrary: global.Promise,
+        useUnifiedTopology:true
     })
 
     // 连接错误
