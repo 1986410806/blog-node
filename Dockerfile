@@ -8,7 +8,7 @@ ADD package.json  .
 
 RUN  yarn config set registry https://registry.npm.taobao.org && \
     yarn global add pm2 && \
-    yarn install --production --no-cache
+    yarn --production --no-cache
 
 COPY . /app
 ADD app.config_pro.js app.config.js
