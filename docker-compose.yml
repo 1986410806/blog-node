@@ -1,15 +1,13 @@
 version: "3.9"
 
 services:
-   nginx:
-    image: nginx
+  nginx:
+    image: zhaohuinan/blog-nginx
     restart: always
     ports:
       - 80:80
     networks:
       - web-network
-
-
   mongo:
     image: mongo
     restart: always
@@ -21,16 +19,26 @@ services:
     networks:
       - web-network
 
-  blog-node:
+  node:
     image: zhaohuinan/blog-node:latest
     restart: always
-    ports:
-      - 3000:3000
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: zhh123
     networks:
       - web-network
+
+  admin:
+    image: zhaohuinan/blog-admin:latest
+    restart: always
+    networks:
+      - web-network
+
+  react:
+    image: zhaohuinan/blog-react:latest
+    restart: always
+    networks:
+      - web-network    
 
 networks:
   web-network:
