@@ -44,7 +44,7 @@ services:
     ports:
       - 82:80
     networks:
-      - web-network    
+      - web-network
 
 networks:
   web-network:

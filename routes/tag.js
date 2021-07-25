@@ -3,8 +3,6 @@ import Tag from '../models/tag';
 
 //获取全部标签
 exports.getTagList = (req, res) => {
-  // console.log('req userInfo: ',req.cookies.userInfo)
-  // console.log('req userInfo 2: ', unescape(req.cookies.userInfo));
   let keyword = req.query.keyword || null;
   let pageNum = parseInt(req.query.pageNum) || 1;
   let pageSize = parseInt(req.query.pageSize) || 10;
@@ -28,10 +26,10 @@ exports.getTagList = (req, res) => {
       let fields = {
 				_id: 1,
         name: 1,
-        // desc: 1,
+        desc: 1,
         // icon: 1,
-        // create_time: 1,
-        // update_time: 1,
+        create_time: 1,
+        update_time: 1,
       }; // 待返回的字段
       let options = {
         skip: skip,

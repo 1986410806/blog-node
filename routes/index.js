@@ -10,6 +10,7 @@ const link = require('./link');
 const category = require('./category');
 const timeAxis = require('./timeAxis');
 const project = require('./project');
+const qiniu = require('./qiniu');
 
 module.exports = app => {
 	app.post('/login', user.login);
@@ -65,4 +66,8 @@ module.exports = app => {
 	app.post('/delProject', project.delProject);
 	app.get('/getProjectList', project.getProjectList);
 	app.post('/getProjectDetail', project.getProjectDetail);
+
+	// 七牛云
+	app.get('/qiniu/getToken', qiniu.getQiniuToken);
+
 };

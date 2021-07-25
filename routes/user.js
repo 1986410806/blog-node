@@ -129,24 +129,7 @@ exports.userInfo = (req, res) => {
 exports.currentUser = (req, res) => {
   let user = req.session.userInfo;
   if (user) {
-    user.avatar = 'http://p61te2jup.bkt.clouddn.com/WechatIMG8.jpeg';
-    user.notifyCount = 0;
-    user.address = '广东省';
-    user.country = 'China';
-    user.group = 'BiaoChenXuying';
-    (user.title = '交互专家'), (user.signature = '海纳百川，有容乃大');
-    user.tags = [];
-    user.geographic = {
-      province: {
-        label: '广东省',
-        key: '330000',
-      },
-      city: {
-        label: '广州市',
-        key: '330100',
-      },
-    };
-    responseClient(res, 200, 0, '', user);
+    responseClient(res, 200, 0, '操作成功', user);
   } else {
     responseClient(res, 200, 1, '请重新登录', user);
   }
