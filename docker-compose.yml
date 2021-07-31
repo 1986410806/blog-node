@@ -25,24 +25,18 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: zhh123
-    ports:
-      - 3000:3000
     networks:
       - web-network
 
   admin:
     image: zhaohuinan/blog-admin:latest
     restart: always
-    ports:
-      - 81:80
     networks:
       - web-network
 
   react:
     image: zhaohuinan/blog-react:latest
     restart: always
-    ports:
-      - 82:80
     networks:
       - web-network
 
