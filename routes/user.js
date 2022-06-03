@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 const CONFIG = require('../app.config.js');
 const User = require('../models/user');
 // const OAuth = require('../models/oauth');
-import { MD5_SUFFIX, responseClient, md5 } from '../util/util.js';
+import { md5, responseClient } from '../util/util.js';
 
 // 第三方授权登录的用户信息
 exports.getUser = (req, res) => {
@@ -21,7 +21,7 @@ exports.getUser = (req, res) => {
   fetch(path, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json', 
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(params),
   })
@@ -100,7 +100,7 @@ exports.login = (req, res) => {
   }
   User.findOne({
     email,
-    password: md5(password + MD5_SUFFIX),
+    password: md5(password),
   })
     .then(userInfo => {
       if (userInfo) {
@@ -156,7 +156,7 @@ exports.loginAdmin = (req, res) => {
   }
   User.findOne({
     email,
-    password: md5(password + MD5_SUFFIX),
+    password: md5(password),
   })
     .then(userInfo => {
       if (userInfo) {
@@ -208,7 +208,7 @@ exports.register = (req, res) => {
       let user = new User({
         email,
         name,
-        password: md5(password + MD5_SUFFIX),
+        password: md5(password),
         phone,
         type,
         introduce,

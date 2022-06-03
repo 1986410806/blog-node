@@ -1,4 +1,4 @@
-import {responseClient} from "../util/util";
+import { responseClient } from "../util/util";
 import qiniu from "qiniu"
 
 exports.getQiniuToken = (req, res) => {
@@ -11,7 +11,7 @@ exports.getQiniuToken = (req, res) => {
         scope: "zhao-blog",
     };
     var putPolicy = new qiniu.rs.PutPolicy(options);
-    var uploadToken=putPolicy.uploadToken(mac);
+    var uploadToken = putPolicy.uploadToken(mac);
 
     responseClient(res, 200, 0, 'success', uploadToken);
 }
